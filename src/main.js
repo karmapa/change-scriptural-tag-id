@@ -16,7 +16,9 @@ let fileNames = textsAndNames.fileNames;
 
 let newTexts = shiftTagId(texts, shiftSetting, tagClass, shiftNum);
 
-writeFiles(newTexts, fileNames, newTextPath);
+if (newTexts) {
+  writeFiles(newTexts, fileNames, newTextPath);
+}
 
 function shiftTagId(texts, shiftSetting, tagClass, shiftNum) {
   let shiftRange = getShiftRange(shiftSetting);
@@ -33,6 +35,7 @@ function shiftTagId(texts, shiftSetting, tagClass, shiftNum) {
     case 'reorder-bampo':
       return;
     default:
+      console.log('should match following command');
       console.log('node index.js shift-[sutra, bampo] [shift number] [grq,lsq]');
       console.log('node index.js reorder-[sutra, bampo] [first number] [gre,lss]');
       break;
