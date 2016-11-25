@@ -13,7 +13,7 @@ function getTextAndNames(textPath) {
 
   return {
     'fileNames': fileNames,
-    'text': texts
+    'texts': texts
   };
 }
 
