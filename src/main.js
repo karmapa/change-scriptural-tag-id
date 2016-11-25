@@ -4,21 +4,23 @@ const tagClass = process.argv[2];
 const shiftNum = Number(process.argv[3]);
 const shiftSetting = process.argv[4];
 
-import {GetTextAndNames, WriteFiles} from './processFile.js';
-import GetShiftRange from './getShiftRange.js';
-import ShiftSutraId from './shiftSutraId.js';
+import {getTextAndNames, writeFiles} from './processFile.js';
+import {getShiftRange} from './getShiftRange.js';
+import {shiftSutraId} from './shiftSutraId.js';
 
-let textsAndNames = GetTextAndNames(oldTextPath);
-//let newTextObjs = mainProcess(textObjs, shiftSetting, tagClass, shiftNum);
+let textsAndNames = getTextAndNames(oldTextPath);
+let texts = textsAndNames.texts;
+let fileNames = textsAndNames.fileNames;
+let newTexts = shiftTagId(texts, shiftSetting, tagClass, shiftNum);
+writeFiles(newTexts, fileNames, newTextPath);
 
-
-/*function mainProcess(textObjs, shiftSetting, tagClass, shiftNum) {
-  let shiftRange = GetShiftRange(shiftSetting);
+function shiftTagId(texts, shiftSetting, tagClass, shiftNum) {
+  let shiftRange = getShiftRange(shiftSetting);
   let start = shiftRange.start;
   let end = shiftRange.end;
 
   switch (tagClass) {
     case 'sutra':
-      return ShiftSutraId(textObjs, shiftNum, start, end);
+      return shiftSutraId(texts, shiftNum, start, end);
   }
-}*/
+}

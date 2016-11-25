@@ -1,4 +1,4 @@
-module.exports = function(shiftSetting) {
+export function getShiftRange(shiftSetting) {
   let startNum, endNum;
 
   if (shiftSetting) {

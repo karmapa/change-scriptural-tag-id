@@ -1,14 +1,14 @@
-import Fs from 'fs';
-import Path from 'path';
-import Glob from 'glob';
+import fs from 'fs';
+import dealPath from 'path';
+import glob from 'glob';
 
 function getTextAndNames(textPath) {
   let fileNames = [], texts = [];
 
-  Glob.sync(textPath + '/**/*.*(txt|xml)')
+  glob.sync(textPath + '/**/*.*(txt|xml)')
     .forEach((route) => {
-      fileNames.push(Path.basename(route));
-      texts.push(Fs.readFileSync(route, 'utf8'));
+      fileNames.push(dealPath.basename(route));
+      texts.push(fs.readFileSync(route, 'utf8'));
     });
 
   return {
@@ -18,13 +18,10 @@ function getTextAndNames(textPath) {
 }
 
 function writeFiles(texts, names, path) {
-  tests.forEach((text, i) => {
+  texts.forEach((text, i) => {
     let fileName = names[i];
-    Fs.writeFileSync(path + '/' + fileName, text, 'utf8');
+    fs.writeFileSync(path + '/' + fileName, text, 'utf8');
   });
 }
 
-export {
-  getTextAndNames as GetTextAndNames,
-  writeFiles as WriteFiles
-}
+export {getTextAndNames, writeFiles};

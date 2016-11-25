@@ -1,4 +1,4 @@
-module.exports = function shiftMiddleNum(text, regex, shiftNum, min, max) {
+export function shiftMiddleNum(text, regex, shiftNum, min, max) {
   return text.replace(regex, (wholeMatch, preStr, midNum, postStr) => {
     midNum = Number(midNum);
 
