@@ -9,7 +9,6 @@ const bampoRegex = /(<bampo n=")(\d+)([a-zA-Z]\.[^>]+?"\/>)/g;
 import {getTextAndNames, writeFiles} from './processFile.js';
 import {getShiftRange} from './getShiftRange.js';
 import {shiftMiddleNum} from './shiftMiddleNum.js';
-//import {shiftSutraId} from './shiftSutraId.js';
 
 let textsAndNames = getTextAndNames(oldTextPath);
 let texts = textsAndNames.texts;
@@ -27,7 +26,7 @@ function shiftTagId(texts, shiftSetting, tagClass, shiftNum) {
   switch (tagClass) {
     case 'sutra':
       return shiftMiddleNum(texts, sutraRegex, shiftNum, start, end);
-    //case 'bampo':
-      //return shiftBampoN(texts, shiftNum, start, end);
+    case 'bampo':
+      return shiftMiddleNum(texts, bampoRegex, shiftNum, start, end);
   }
 }
