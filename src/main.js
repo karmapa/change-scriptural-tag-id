@@ -4,7 +4,7 @@ const tagClass = process.argv[2];
 const shiftNum = Number(process.argv[3]);
 const shiftSetting = process.argv[4];
 const sutraRegex = /(<sutra id="[0-9a-zA-Z]+?)(\d+)([^\d>]*"\/>)/g;
-const bampoRegex = /(<bampo n=")(\d+)([a-zA-Z]\.[^>]+?"\/>)/g;
+const bampoRegex = /(<bampo n=")(\d+)([a-zA-Z]*\.[^>]+?"\/>)/g;
 
 import {getTextAndNames, writeFiles} from './processFile.js';
 import {getShiftRange} from './getShiftRange.js';
