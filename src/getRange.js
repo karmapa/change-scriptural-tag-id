@@ -1,8 +1,8 @@
-export function getShiftRange(shiftSetting) {
+export function getRange(rangeSetting) {
   let startNum, endNum;
 
-  if (shiftSetting) {
-    let sets = shiftSetting.split(',')
+  if (rangeSetting) {
+    let sets = rangeSetting.split(',')
     let startStr = sets[0];
     let endStr = sets[1];
 
