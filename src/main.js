@@ -24,9 +24,9 @@ function shiftTagId(texts, shiftSetting, tagClass, shiftNum) {
   let end = shiftRange.end;
 
   switch (tagClass) {
-    case 'sutra':
+    case 'shiftSutra':
       return shiftMiddleNum(texts, sutraRegex, shiftNum, start, end);
-    case 'bampo':
+    case 'shiftBampo':
       return shiftMiddleNum(texts, bampoRegex, shiftNum, start, end);
   }
 }
