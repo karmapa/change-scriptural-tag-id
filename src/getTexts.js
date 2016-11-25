@@ -2,7 +2,7 @@ import Fs from 'fs';
 import Path from 'path';
 import Glob from 'glob';
 
-function getTexts(textPath) {
+module.exports = function(textPath) {
   return Glob.sync(textPath + '/**/*.*(txt|xml)')
     .map((route) => {
       let fileName = Path.basename(route);
@@ -12,6 +12,4 @@ function getTexts(textPath) {
         'text': text
       }
     });
-}
-
-module.exports = getTexts;
+};
