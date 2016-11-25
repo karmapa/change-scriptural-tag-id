@@ -33,8 +33,8 @@ function shiftTagId(texts, shiftSetting, tagClass, shiftNum) {
     case 'reorder-bampo':
       return;
     default:
-      console.log('node index.js shift-[sutra, bampo] [shift number] [first,final]');
-      console.log('node index.js reorder-[sutra, bampo] [first number] [after,before]');
+      console.log('node index.js shift-[sutra, bampo] [shift number] [grq,lsq]');
+      console.log('node index.js reorder-[sutra, bampo] [first number] [gre,lss]');
       break;
   }
 }
