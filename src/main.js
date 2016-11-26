@@ -9,6 +9,7 @@ const bampoRegex = /(<bampo n=")(\d+)([a-zA-Z]*\.[^>]+?"\/>)/g;
 import {getTextAndNames, writeFiles} from './processFile.js';
 import {getRange} from './getRange.js';
 import {shiftMiddleNum} from './shiftMiddleNum.js';
+import {reorderMiddleNum} from './reorderMiddleNum.js'; 
 
 let textsAndNames = getTextAndNames(oldTextPath);
 let texts = textsAndNames.texts;
@@ -31,9 +32,9 @@ function shiftTagId(texts, rangeSetting, tagClass, keyNum) {
     case 'shift-bampo':
       return shiftMiddleNum(texts, bampoRegex, keyNum, start, end);
     case 'reorder-sutra':
-      return;
+      return reorderMiddleNum(texts, sutraRegex, keyNum, start, end);
     case 'reorder-bampo':
-      return;
+      return reorderMiddleNum(texts, bampoRegex, keyNum, start, end);
     default:
       console.log('should match following command');
       console.log('node index.js shift-[sutra, bampo] [shift number] [grq,lsq]');
