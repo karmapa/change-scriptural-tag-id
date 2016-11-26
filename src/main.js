@@ -4,7 +4,6 @@ const tagClass = process.argv[2];
 const keyNum = Number(process.argv[3]);
 const rangeSetting = process.argv[4];
 const sutraRegex = /(<sutra id="[0-9a-zA-Z]+?)(\d+)([^\d>]*"\/>)/g;
-const bampoRegex = /(<bampo n=")(\d+)([a-zA-Z]*\.[^>]+?"\/>)/g;
 
 import {getTextAndNames, writeFiles} from './processFile.js';
 import {getRange} from './getRange.js';
@@ -29,16 +28,12 @@ function shiftTagId(texts, rangeSetting, tagClass, keyNum) {
   switch (tagClass) {
     case 'shift-sutra':
       return shiftMiddleNum(texts, sutraRegex, keyNum, start, end);
-    case 'shift-bampo':
-      return shiftMiddleNum(texts, bampoRegex, keyNum, start, end);
     case 'reorder-sutra':
       return reorderMiddleNum(texts, sutraRegex, keyNum, start, end);
-    case 'reorder-bampo':
-      return reorderMiddleNum(texts, bampoRegex, keyNum, start, end);
     default:
       console.log('should match following command');
-      console.log('node index.js shift-[sutra, bampo] [shift number] [grq,lsq]');
-      console.log('node index.js reorder-[sutra, bampo] [first number] [gre,lss]');
+      console.log('node index.js shift-[sutra] [shift number] [grq,lsq]');
+      console.log('node index.js reorder-[sutra] [first number] [gre,lss]');
       break;
   }
 }
