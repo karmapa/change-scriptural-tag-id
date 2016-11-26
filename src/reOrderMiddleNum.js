@@ -1,4 +1,4 @@
-export function reorderMiddleNum(texts, regex, keyNum, floor, roof) {
+export function reOrderMiddleNum(texts, regex, keyNum, floor, roof) {
   return texts.map((text) => {
     return text.replace(regex, (wholeMatch, preStr, midNum, postStr) => {
       midNum = Number(midNum);
