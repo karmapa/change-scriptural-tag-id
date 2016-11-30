@@ -5,13 +5,6 @@ const rangeRegex = /^\d*?,\d*?$/;
 const keyNumRegex = /^\d+$/;
 const sutraIdRegex = /^[0-9a-zA-Z]+?\d+[^\d>]*$/;
 const regexs = [sutraActionRegex, bampoActionRegex, rangeRegex, keyNumRegex, sutraIdRegex];
-const errMessages = [
-  'should match following command',
-  'node index.js shift-sutra [--bampo] [shift number] [grq,lsq]',
-  'node index.js reorder-sutra [--bampo] [first number] [gre,lss]',
-  'node index.js rename-sutra [--bampo] [first sutraId]',
-  'node index.js --bampo'
-];
 
 let args = getConstsFromArgv();
 
@@ -30,13 +23,7 @@ function getConstsFromArgv() {
     result[propName] = findElement(argvs, regex);
   });
 
-  if (! result.sutraAction && ! result.bampoAction) {
-    throw new Error(errMessages.join('\n'));
-  }
-
-  if ('rename-sutra' === result.sutraAction && ! result.firstSutraId) {
-    throw new Error(errMessages[0] + '\n' + errMessages[3]);
-  }
+  argvsErrorHandle(result);
 
   return result;
 }
@@ -51,3 +38,24 @@ function findElement(arr, regex) {
   return found;
 }
 
+function argvsErrorHandle(result) {
+  const errMessages = [
+    'should match following command',
+    'node index.js shift-sutra [--bampo] [shift number] [grq,lsq]',
+    'node index.js reorder-sutra [--bampo] [first number] [gre,lss]',
+    'node index.js rename-sutra [--bampo] [first sutraId]',
+    'node index.js --bampo'
+  ];
+
+  if (! result.sutraAction && ! result.bampoAction) {
+    throw new Error(errMessages.join('\n'));
+  }
+
+  if ('rename-sutra' === result.sutraAction && ! result.firstSutraId) {
+    throw new Error(errMessages[0] + '\n' + errMessages[3]);
+  }
+
+  if ('shift-sutra' === result.sutraAction && ! result.keyNum) {
+    throw new Error(errMessages[0] + '\n' + errMessages[1]);
+  }
+}
