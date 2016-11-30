@@ -1,7 +1,7 @@
 # change-scriptural-tag-id
 安裝步驟只有兩個
 
-1. 下載 node.js
+1. 下載安裝 node.js
 
 2. 下載並在 change-scriptural-tag-id 資料夾開啟命令列視窗，輸入
 ```
