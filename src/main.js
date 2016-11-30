@@ -15,38 +15,34 @@ let textsAndNames = getTextAndNames(oldTextPath);
 let texts = textsAndNames.texts;
 let fileNames = textsAndNames.fileNames;
 
-//let newTexts = changeTagId(texts);
+let newTexts = changeTagId(texts);
 
 /*if (newTexts) {
   writeFiles(newTexts, fileNames, newTextPath);
 }*/
-/*
+
 function changeTagId(texts) {
   let range = getRange(rangeSetting);
   let start = range.start;
   let end = range.end;
 
-  if (! isNaN(Number(keyNum))) {
-    keyNum = Number(majorArg);
-  }
-  else {
-    firstSutraId = majorArg;
-  }
 
   let resultTexts = changeSutraId(sutraAction);
-
-  return bampoAction ? syncBampoAndSutra(resultTexts) : resultTexts;
+  console.log(resultTexts);
+  //return bampoAction ? syncBampoAndSutra(resultTexts) : resultTexts;
 
   function changeSutraId(sutraAction) {
     switch (sutraAction) {
       case 'shift-sutra':
-        return shiftMiddleNum(texts, sutraNumRegex, keyNum, start, end);
+        let shiftNum = Number(keyNum);
+        return shiftMiddleNum(texts, sutraNumRegex, shiftNum, start, end);
       case 'reorder-sutra':
-        return reOrderMiddleNum(texts, sutraNumRegex, keyNum, start, end);
+        let firstNum = keyNum ? Number(keyNum) : 1;
+        return reOrderMiddleNum(texts, sutraNumRegex, firstNum, start, end);
       case 'rename-sutra':
         return renameSutra(texts, sutraNameRegex, firstSutraId);
       default:
         return texts;
     }
   }
-}*/
+}
