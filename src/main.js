@@ -1,11 +1,9 @@
 const oldTextPath = './old-texts';
 const newTextPath = './new-pb-texts';
-const tagClass = process.argv[2];
-const majorArg = process.argv[3];
-const rangeSetting = process.argv[4];
 const sutraNumRegex = /(<sutra id="[0-9a-zA-Z]+?)(\d+)([^\d>]*"\/>)/g;
 const sutraNameRegex = /(<sutra id=")([^>]*?)("\/>)/g;
 
+import {sutraAction, bampoAction, rangeSetting, keyNum} from './processArgv.js'
 import {getTextAndNames, writeFiles} from './processFile.js';
 import {getRange} from './getRange.js';
 import {shiftMiddleNum} from './shiftMiddleNum.js';
@@ -52,12 +50,6 @@ function changeTagId(texts, rangeSetting, actionInput, majorArg) {
         return renameSutra(texts, sutraNameRegex, firstSutraId);
       default:
         return texts;
-        //console.log('should match following command');
-        //console.log('node index.js shift-sutra [--bampo] [shift number] [grq,lsq]');
-        //console.log('node index.js reorder-sutra [--bampo] [first number] [gre,lss]');
-        //console.log('node index.js rename-sutra [--bampo] [first number]');
-        //console.log('node index.js --bampo');
-        break;
     }
   }
 }
