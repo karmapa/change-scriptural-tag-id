@@ -36,7 +36,7 @@ function changeTagId(texts) {
         let shiftNum = Number(keyNum);
         return shiftMiddleNum(texts, sutraNumRegex, shiftNum, start, end);
       case 'reorder-sutra':
-        let firstNum = keyNum ? Number(keyNum) : 1;
+        let firstNum = Number(keyNum);
         return reOrderMiddleNum(texts, sutraNumRegex, firstNum, start, end);
       case 'rename-sutra':
         return renameSutra(texts, sutraNameRegex, firstSutraId);
