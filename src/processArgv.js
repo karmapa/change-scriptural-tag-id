@@ -12,7 +12,12 @@ const errMessages = [
   'node index.js --bampo'
 ];
 
-export getConstsFromArgv();
+let args = getConstsFromArgv();
+
+export let sutraAction = args.sutraAction;
+export let bampoAction = args.bampoAction;
+export let rangeSetting = args.rangeSetting;
+export let keyNum = args.keyNum;
 
 function getConstsFromArgv() {
   let result = {};
@@ -20,7 +25,7 @@ function getConstsFromArgv() {
 
   propNames.forEach((propName, i) => {
     let regex = regexs[i];
-    result.propName = findElement(argvs, regex);
+    result[propName] = findElement(argvs, regex);
   });
 
   if (! result.sutraAction && ! result.bampoAction) {
