@@ -2,7 +2,7 @@ const argvs = process.argv.slice(2);
 const sutraActionRegex = /^(shift|reorder|rename)-sutra$/;
 const bampoActionRegex = /^--bampo$/;
 const rangeRegex = /^\d*?,\d*?$/;
-const keyNumRegex = /^\d+$/;
+const keyNumRegex = /^-?\d+$/;
 const sutraIdRegex = /^[0-9a-zA-Z]+?\d+[^\d>]*$/;
 const regexs = [sutraActionRegex, bampoActionRegex, rangeRegex, keyNumRegex, sutraIdRegex];
 
