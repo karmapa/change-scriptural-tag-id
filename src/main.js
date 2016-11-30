@@ -3,33 +3,30 @@ const newTextPath = './new-pb-texts';
 const sutraNumRegex = /(<sutra id="[0-9a-zA-Z]+?)(\d+)([^\d>]*"\/>)/g;
 const sutraNameRegex = /(<sutra id=")([^>]*?)("\/>)/g;
 
-import {sutraAction, bampoAction, rangeSetting, keyNum} from './processArgv.js'
-//import {getTextAndNames, writeFiles} from './processFile.js';
-//import {getRange} from './getRange.js';
+import {sutraAction, bampoAction, rangeSetting, keyNum, firstSutraId} from './processArgv.js'
+import {getTextAndNames, writeFiles} from './processFile.js';
+import {getRange} from './getRange.js';
 //import {shiftMiddleNum} from './shiftMiddleNum.js';
 //import {reOrderMiddleNum} from './reOrderMiddleNum.js'; 
 //import (renameSutra) from './renameSutra.js';
 //import {syncBampoAndSutra} from './syncBampoAndSutra.js';
-/*
+
 let textsAndNames = getTextAndNames(oldTextPath);
 let texts = textsAndNames.texts;
 let fileNames = textsAndNames.fileNames;
 
-let newTexts = shiftTagId(texts, rangeSetting, tagClass, majorArg);
+//let newTexts = changeTagId(texts);
 
-if (newTexts) {
+/*if (newTexts) {
   writeFiles(newTexts, fileNames, newTextPath);
-}
-
-function changeTagId(texts, rangeSetting, actionInput, majorArg) {
+}*/
+/*
+function changeTagId(texts) {
   let range = getRange(rangeSetting);
   let start = range.start;
   let end = range.end;
-  let keyNum, firstSutraId;
-  let actions = actionInput.split('--');
-  let sutraAction = actions[0], bampoAction = actions[1];
 
-  if (! isNaN(Number(majorArg))) {
+  if (! isNaN(Number(keyNum))) {
     keyNum = Number(majorArg);
   }
   else {
@@ -52,5 +49,4 @@ function changeTagId(texts, rangeSetting, actionInput, majorArg) {
         return texts;
     }
   }
-}
-*/
+}*/

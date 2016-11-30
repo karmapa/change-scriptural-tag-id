@@ -3,12 +3,13 @@ const sutraActionRegex = /^(shift|reorder|rename)-sutra$/;
 const bampoActionRegex = /^--bampo$/;
 const rangeRegex = /^\d*?,\d*?$/;
 const keyNumRegex = /^\d+$/;
-const regexs = [sutraActionRegex, bampoActionRegex, rangeRegex, keyNumRegex];
+const sutraIdRegex = /^[0-9a-zA-Z]+?\d+[^\d>]*$/;
+const regexs = [sutraActionRegex, bampoActionRegex, rangeRegex, keyNumRegex, sutraIdRegex];
 const errMessages = [
   'should match following command',
   'node index.js shift-sutra [--bampo] [shift number] [grq,lsq]',
   'node index.js reorder-sutra [--bampo] [first number] [gre,lss]',
-  'node index.js rename-sutra [--bampo] [first number]',
+  'node index.js rename-sutra [--bampo] [first sutraId]',
   'node index.js --bampo'
 ];
 
@@ -18,10 +19,11 @@ export let sutraAction = args.sutraAction;
 export let bampoAction = args.bampoAction;
 export let rangeSetting = args.rangeSetting;
 export let keyNum = args.keyNum;
+export let firstSutraId = args.firstSutraId;
 
 function getConstsFromArgv() {
   let result = {};
-  let propNames = ['sutraAction', 'bampoAction', 'rangeSetting', 'keyNum'];
+  let propNames = ['sutraAction', 'bampoAction', 'rangeSetting', 'keyNum', 'firstSutraId'];
 
   propNames.forEach((propName, i) => {
     let regex = regexs[i];
@@ -30,6 +32,10 @@ function getConstsFromArgv() {
 
   if (! result.sutraAction && ! result.bampoAction) {
     throw new Error(errMessages.join('\n'));
+  }
+
+  if ('rename-sutra' === result.sutraAction && ! result.firstSutraId) {
+    throw new Error(errMessages[0] + '\n' + errMessages[3]);
   }
 
   return result;
