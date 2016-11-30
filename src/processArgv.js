@@ -40,7 +40,7 @@ function findElement(arr, regex) {
 
 function argvsErrorHandle(result) {
   const errMessages = [
-    'should match the following command',
+    'Error:\nInput of command line should be one of the following:',
     'node index.js shift-sutra [--bampo] [shift number] [grq,lsq]',
     'node index.js reorder-sutra [--bampo] [first number] [gre,lss]',
     'node index.js rename-sutra [--bampo] [first sutraId]',
@@ -48,14 +48,14 @@ function argvsErrorHandle(result) {
   ];
 
   if (! result.sutraAction && ! result.bampoAction) {
-    throw new Error(errMessages.join('\n'));
+    throw new Error(errMessages.join('\n')).message;
   }
 
   if ('rename-sutra' === result.sutraAction && ! result.firstSutraId) {
-    throw new Error(errMessages[0] + '\n' + errMessages[3]);
+    throw new Error(errMessages[0] + '\n' + errMessages[3]).message;
   }
 
   if ('shift-sutra' === result.sutraAction && ! result.keyNum) {
-    throw new Error(errMessages[0] + '\n' + errMessages[1]);
+    throw new Error(errMessages[0] + '\n' + errMessages[1]).message;
   }
 }
