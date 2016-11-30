@@ -3,7 +3,7 @@ const sutraActionRegex = /^(shift|reorder|rename)-sutra$/;
 const bampoActionRegex = /^--bampo$/;
 const rangeRegex = /^\d*?,\d*?$/;
 const keyNumRegex = /^-?\d+$/;
-const sutraIdRegex = /^[0-9a-zA-Z]+?\d+[^\d>]*$/;
+const sutraIdRegex = /^[0-9a-zA-Z]+?\d+$/;
 const regexs = [sutraActionRegex, bampoActionRegex, rangeRegex, keyNumRegex, sutraIdRegex];
 
 let args = getConstsFromArgv();
@@ -51,11 +51,15 @@ function argvsErrorHandle(result) {
     throw new Error(errMessages.join('\n')).message;
   }
 
-  if ('rename-sutra' === result.sutraAction && ! result.firstSutraId) {
-    throw new Error(errMessages[0] + '\n' + errMessages[3]).message;
-  }
-
   if ('shift-sutra' === result.sutraAction && ! result.keyNum) {
     throw new Error(errMessages[0] + '\n' + errMessages[1]).message;
+  }
+
+  if ('reorder-sutra' === result.sutraAction && ! result.keyNum) {
+    throw new Error(errMessages[0] + '\n' + errMessages[2]).message;
+  }
+
+  if ('rename-sutra' === result.sutraAction && ! result.firstSutraId) {
+    throw new Error(errMessages[0] + '\n' + errMessages[3]).message;
   }
 }
