@@ -1,5 +1,5 @@
 const sutraBampoRegex = /(<sutra id=[^>]+?>|<bampo n=[^>]+?>)/g;
-const sutraRegex = /<sutra id="[0-9a-zA-Z]+?(\d+)[^\d>]*"\/>/;
+const sutraRegex = /<sutra id="[0-9a-zA-Z]+?(\d+[^\d>]*)"\/>/;
 const bampoTagRegex = /<bampo n="[^>]*"\/>/g;
 const preBampoTag = '<bampo n="', postBampoTag = '"/>';
 

@@ -16,10 +16,10 @@ let texts = textsAndNames.texts;
 let fileNames = textsAndNames.fileNames;
 
 let newTexts = changeTagId(texts);
-console.log(newTexts);
-/*if (newTexts) {
+
+if (newTexts) {
   writeFiles(newTexts, fileNames, newTextPath);
-}*/
+}
 
 function changeTagId(texts) {
   let range = getRange(rangeSetting);
@@ -27,7 +27,7 @@ function changeTagId(texts) {
   let end = range.end;
 
   let resultTexts = changeSutraId(sutraAction);
-  //console.log(resultTexts);
+
   return bampoAction ? syncBampoAndSutra(resultTexts) : resultTexts;
 
   function changeSutraId(sutraAction) {
