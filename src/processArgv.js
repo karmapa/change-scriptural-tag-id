@@ -40,7 +40,7 @@ function findElement(arr, regex) {
 
 function argvsErrorHandle(result) {
   const errMessages = [
-    'should match following command',
+    'should match the following command',
     'node index.js shift-sutra [--bampo] [shift number] [grq,lsq]',
     'node index.js reorder-sutra [--bampo] [first number] [gre,lss]',
     'node index.js rename-sutra [--bampo] [first sutraId]',
