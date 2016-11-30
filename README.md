@@ -11,7 +11,7 @@ npm i
 
 指令如下：
 
-(1)根據 sutra id 命名和排序 bampo 
+(1)根據 sutra id 重新命名和排序 bampo 
 ```
 node index.js --bampo
 ```
