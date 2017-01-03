@@ -7,7 +7,7 @@ export function syncBampoAndSutra(texts) {
   let sutraId, bampoN;
 
   return texts.map((text) => {
-    let sbMixTags = text.match(sutraBampoRegex);
+    let sbMixTags = text.match(sutraBampoRegex) || [];
     let newBampoTags = [];
 
     sbMixTags.forEach((sbTag) => {
