@@ -3,8 +3,8 @@ import dealPath from 'path';
 import glob from 'glob';
 import naturalSort from 'javascript-natural-sort';
 
-function getTextAndNames(textPath, newTextPath) {
-  let fileNames = [], texts = [];
+function getTextAndRoutes(textPath, newTextPath) {
+  let fileRoutes = [], texts = [];
 
   glob.sync(textPath + '/**/*.*(txt|xml)')
     .sort(naturalSort)
@@ -12,33 +12,34 @@ function getTextAndNames(textPath, newTextPath) {
       let newRoute = route.replace(textPath, newTextPath);
       let newDir = dealPath.dirname(newRoute);
       mkDeepDir(newDir);
-      fileNames.push(newRoute);
+      fileRoutes.push(newRoute);
       texts.push(fs.readFileSync(route, 'utf8'));
     });
 
   return {
-    'fileNames': fileNames,
+    'fileRoutes': fileRoutes,
     'texts': texts
   };
 }
 
 function mkDeepDir(dir) {
-  fs.mkdir(dir + '/', (err) => {
-    if (err) {
-      if (/no such file or directory/.test(err.message)) {
-        let shallowerPath = dealPath.dirname(dir);
-        mkDeepDir(shallowerPath);
-        mkDeepDir(dir);
-      }
+  try {
+    fs.mkdirSync(dir + '/');
+  }
+  catch (err) {
+    if (/no such file or directory/.test(err.message)) {
+      let shallowerPath = dealPath.dirname(dir);
+      mkDeepDir(shallowerPath);
+      mkDeepDir(dir);
     }
-  });
+  }
 }
 
-function writeFiles(texts, names) {
+function writeFiles(texts, routes) {
   texts.forEach((text, i) => {
-    let fileName = names[i];
-    fs.writeFileSync(fileName, text, 'utf8');
+    let fileRoute = routes[i];
+    fs.writeFileSync(fileRoute, text, 'utf8');
   });
 }
 
-export {getTextAndNames, writeFiles};
+export {getTextAndRoutes, writeFiles};

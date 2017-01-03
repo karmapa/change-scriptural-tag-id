@@ -4,22 +4,22 @@ const sutraNumRegex = /(<sutra id="[0-9a-zA-Z]+?)(\d+)([^\d>]*"\/>)/g;
 const sutraNameRegex = /(<sutra id=")([^>]*?)("\/>)/g;
 
 import {sutraAction, bampoAction, rangeSetting, keyNum, firstSutraId} from './processArgv.js'
-import {getTextAndNames, writeFiles} from './processFile.js';
+import {getTextAndRoutes, writeFiles} from './processFile.js';
 import {getRange} from './getRange.js';
 import {shiftMiddleNum} from './shiftMiddleNum.js';
 import {reOrderMiddleNum} from './reOrderMiddleNum.js'; 
 import {renameSutra} from './renameSutra.js';
 import {syncBampoAndSutra} from './syncBampoAndSutra.js';
 
-let textsAndNames = getTextAndNames(oldTextPath, newTextPath);
+let textsAndRoutes = getTextAndRoutes(oldTextPath, newTextPath);
 
-let texts = textsAndNames.texts;
-let fileNames = textsAndNames.fileNames;
+let texts = textsAndRoutes.texts;
+let fileRoutes = textsAndRoutes.fileRoutes;
 
 let newTexts = changeTagId(texts);
 
 if (newTexts) {
-  writeFiles(newTexts, fileNames, newTextPath);
+  writeFiles(newTexts, fileRoutes);
 }
 
 function changeTagId(texts) {
