@@ -11,7 +11,8 @@ import {reOrderMiddleNum} from './reOrderMiddleNum.js';
 import {renameSutra} from './renameSutra.js';
 import {syncBampoAndSutra} from './syncBampoAndSutra.js';
 
-let textsAndNames = getTextAndNames(oldTextPath);
+let textsAndNames = getTextAndNames(oldTextPath, newTextPath);
+
 let texts = textsAndNames.texts;
 let fileNames = textsAndNames.fileNames;
 
