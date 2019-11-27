@@ -18,7 +18,7 @@ export function syncBampoAndSutra(texts) {
         bampoN = 1;
       }
       else if (sutraId) {
-        newBampoTags.push(makeNewBampoTag(sutraId, bampoN));
+        newBampoTags.push(makeNewBampoTag(sbTag, sutraId, bampoN));
         bampoN++;
       }
       else {
@@ -31,9 +31,11 @@ export function syncBampoAndSutra(texts) {
   });
 };
 
-function makeNewBampoTag(sutraId, bampoN) {
+function makeNewBampoTag(originalBampoTag, sutraId, bampoN) {
   let newBampoN = sutraId + '\.' + bampoN;
-  return preBampoTag + newBampoN + postBampoTag;
+  return originalBampoTag.replace(/n="([^"])"/, function(m) {
+    return 'n="' + newBampoN + '"';
+  });
 }
 
 function replaceOldBampos(text, newBampos) {

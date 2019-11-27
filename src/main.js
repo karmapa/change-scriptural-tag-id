@@ -3,7 +3,7 @@ const newTextPath = './new-pb-texts';
 const sutraNumRegex = /(<sutra id="[0-9a-zA-Z]+?)(\d+)([^\d>]*"\/>)/g;
 const sutraNameRegex = /(<sutra id=")([^>]*?)("\/>)/g;
 
-import {sutraAction, bampoAction, rangeSetting, keyNum, firstSutraId} from './processArgv.js'
+import {sutraAction, bampoAction, rangeSetting, keyNum, firstSutraId} from './processArgv.js';
 import {getTextAndRoutes, writeFiles} from './processFile.js';
 import {getRange} from './getRange.js';
 import {shiftMiddleNum} from './shiftMiddleNum.js';
@@ -46,3 +46,4 @@ function changeTagId(texts) {
     }
   }
 }
+
